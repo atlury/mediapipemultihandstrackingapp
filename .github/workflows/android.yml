@@ -25,7 +25,10 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       #run: ./gradlew build
-      run: ./gradlew assembleRelease
+      run: | 
+         ./gradlew wrapper --gradle-version=7.3
+         ./gradlew assembleRelease
+      #run: ./gradlew assembleRelease
     - name: Upload APK To Artifact
       uses: actions/upload-artifact@v3
       with:
