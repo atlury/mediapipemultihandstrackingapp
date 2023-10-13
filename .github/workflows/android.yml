@@ -25,8 +25,11 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       #run: ./gradlew build
+      # a bug requies doing twice https://github.com/orgs/community/discussions/25913
+      # https://discuss.gradle.org/t/gradle-wrapper-jar-not-updated-from-6-0-1-to-6-3/35455/9
       run: | 
-         ./gradlew wrapper --gradle-version=7.3
+         ./gradlew wrapper --gradle-version=7.4 --distribution-type=all
+         ./gradlew wrapper --gradle-version=7.4 --distribution-type=all
          ./gradlew assembleRelease
       #run: ./gradlew assembleRelease
     - name: Upload APK To Artifact
